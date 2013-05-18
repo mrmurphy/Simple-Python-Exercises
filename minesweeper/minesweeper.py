@@ -23,8 +23,8 @@ def find_state_2_cells(givenlines):
     bombs = givenlines[1:]
     state_2_cells = []
 
-    for row in xrange(height):
-        for cell in xrange(width):
+    for row in range(height):
+        for cell in range(width):
             if not is_bomb(cell, row, bombs):
                 b = near_bombs(cell, row, bombs)
                 if b:
@@ -38,7 +38,7 @@ def parse_file(filename):
     f = open(filename)
     for line in f.read().split("\n"):
         if line.strip():
-            parsedline = map(int, line.split(" "))
+            parsedline = list(map(int, line.split(" ")))
             givenlines.append(parsedline)
     f.close()
     return givenlines
@@ -57,5 +57,5 @@ def run_test(num):
     write_file("newout{num}.txt".format(num=num), state_2_cells)
 
 if __name__ == '__main__':
-    for i in (2,3,4):
+    for i in (2, 3):
         run_test(i)
